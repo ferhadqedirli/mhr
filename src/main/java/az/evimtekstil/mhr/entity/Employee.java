@@ -25,8 +25,11 @@ public class Employee implements Serializable {
     @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "salary")
-    private Float salary;
+    @Column(name = "monthly_salary")
+    private Float monthlySalary;
+
+    @Column(name = "daily_salary")
+    private Float dailySalary;
 
     public Employee() {
     }
@@ -36,7 +39,7 @@ public class Employee implements Serializable {
         this.position = position;
         this.name = name;
         this.surname = surname;
-        this.salary = salary;
+        this.monthlySalary = salary;
     }
 
     public Integer getEmployeeId() {
@@ -71,11 +74,19 @@ public class Employee implements Serializable {
         this.surname = surname;
     }
 
-    public Float getSalary() {
-        return salary;
+    public Float getMonthlySalary() {
+        return monthlySalary;
     }
 
-    public void setSalary(Float salary) {
-        this.salary = salary;
+    public void setMonthlySalary(Float monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
+
+    public Float getDailySalary() {
+        return dailySalary;
+    }
+
+    public void setDailySalary(Float dailySalary) {
+        this.dailySalary = dailySalary;
     }
 }

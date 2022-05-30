@@ -1,27 +1,24 @@
 package az.evimtekstil.mhr;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
+@OpenAPIDefinition(
+        info = @Info(
+                title = "mhr Service API",
+                description = "mhr crud services",
+                version = "v1"
+        )
+)
 public class MhrApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MhrApplication.class, args);
-    }
-
-    @Bean
-    public Docket api() {
-        return new Docket( DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("az.evimtekstil.mhr"))
-                .build();
+        long start = System.nanoTime();
+        System.out.println(start);
     }
 
 }

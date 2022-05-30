@@ -1,5 +1,8 @@
 package az.evimtekstil.mhr.entity;
 
+import az.evimtekstil.mhr.entity.dto.CategoryDto;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,7 +24,7 @@ public class Category implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> products = new ArrayList<>();
 
     public Category() {
@@ -31,6 +34,11 @@ public class Category implements Serializable {
         this.categoryId = categoryId;
         this.name = name;
         this.products = products;
+    }
+
+    public Category(CategoryDto categoryDto) {
+        this.categoryId = categoryDto.getCategoryId();
+        this.name = categoryDto.getName();
     }
 
     public Integer getCategoryId() {
